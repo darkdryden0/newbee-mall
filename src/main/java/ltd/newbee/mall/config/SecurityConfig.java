@@ -1,3 +1,4 @@
+/*
 package ltd.newbee.mall.config;
 
 import lombok.extern.slf4j.Slf4j;
@@ -19,7 +20,7 @@ import javax.annotation.Resource;
 @Configuration
 public class SecurityConfig {
     private final String[] exceptWebPattern = {};
-    private final String[] exceptAuthPattern = {};
+    private final String[] exceptAuthPattern = {"/admin/login","/admin/logout"};
 
     @Resource
     public CustomAuthFilter customAuthFilter;
@@ -46,3 +47,4 @@ public class SecurityConfig {
         return http.build();
     }
 }
+*/

@@ -1,3 +1,4 @@
+/*
 package ltd.newbee.mall.interceptor;
 
 import lombok.extern.slf4j.Slf4j;
@@ -24,7 +25,7 @@ public class CustomAuthFilter extends OncePerRequestFilter {
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
         UserDetails userDetails;
-        userDetails = userDetailsService.loadUserByMallInfo(request, response);
+        userDetails = userDetailsService.loadUserByMallInfo(request);
         if (userDetails == null) {
             return;
         }
@@ -33,3 +34,4 @@ public class CustomAuthFilter extends OncePerRequestFilter {
         filterChain.doFilter(request, response);
     }
 }
+*/

@@ -1,3 +1,4 @@
+/*
 package ltd.newbee.mall.service.impl;
 
 import lombok.RequiredArgsConstructor;
@@ -13,7 +14,7 @@ import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.util.List;
 
 @Slf4j
@@ -29,10 +30,17 @@ public class UserDetailsServiceImpl implements UserDetailsService
         return null;
     }
 
-    public UserDetails loadUserByMallInfo(HttpServletRequest request, HttpServletResponse response) throws UsernameNotFoundException {
-        //int username = Integer.parseInt(request.getParameter("userId"));
-        int username = 1;
-        AdminUser user = adminUserMapper.selectByPrimaryKey(username);
+    public UserDetails loadUserByMallInfo(HttpServletRequest request) throws UsernameNotFoundException {
+        HttpSession session = request.getSession();
+        if (session.getAttribute("loginUserId") == null) {
+            return new org.springframework.security.core.userdetails.User(
+                    "anonymous",
+                    "anonymous",
+                    List.of(new SimpleGrantedAuthority("VISITOR"))
+            );
+        }
+        int loginUserId = (int) session.getAttribute("loginUserId");
+        AdminUser user = adminUserMapper.selectByPrimaryKey(loginUserId);
         if (user == null) {
             throw new UsernameNotFoundException("未找到当前用户.");
         }
@@ -48,3 +56,4 @@ public class UserDetailsServiceImpl implements UserDetailsService
         return List.of(new SimpleGrantedAuthority("ADMIN"));
     }
 }
+*/
