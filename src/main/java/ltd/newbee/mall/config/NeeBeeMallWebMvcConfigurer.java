@@ -6,6 +6,7 @@
  * Copyright (c) 2019-2020 十三 all rights reserved.
  * 版权所有，侵权必究！
  */
+/*
 package ltd.newbee.mall.config;
 
 import ltd.newbee.mall.common.Constants;
@@ -64,3 +65,4 @@ public class NeeBeeMallWebMvcConfigurer implements WebMvcConfigurer {
         registry.addResourceHandler("/goods-img/**").addResourceLocations("file:" + Constants.FILE_UPLOAD_DIC);
     }
 }
+*/
