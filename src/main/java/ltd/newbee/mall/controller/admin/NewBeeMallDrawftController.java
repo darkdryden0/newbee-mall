@@ -1,5 +1,6 @@
 package ltd.newbee.mall.controller.admin;
 
+import ltd.newbee.mall.service.NewBeeMallDrawftService;
 import ltd.newbee.mall.util.PageQueryUtil;
 import ltd.newbee.mall.util.Result;
 import ltd.newbee.mall.util.ResultGenerator;
@@ -28,10 +29,7 @@ public class NewBeeMallDrawftController {
     @RequestMapping(value = "/drawft/list", method = RequestMethod.GET)
     @ResponseBody
     public Result list(@RequestParam Map<String, Object> params) {
-        /*if (StringUtils.isEmpty(params.get("page")) || StringUtils.isEmpty(params.get("limit")) || StringUtils.isEmpty(params.get("categoryLevel")) || StringUtils.isEmpty(params.get("parentId"))) {
-            return ResultGenerator.genFailResult("参数异常！");
-        }*/
         PageQueryUtil pageUtil = new PageQueryUtil(params);
-        return ResultGenerator.genSuccessResult(newBeeMallDrawftService.getCategorisPage(pageUtil));
+        return ResultGenerator.genSuccessResult(newBeeMallDrawftService.getDrawftPage(pageUtil));
     }
 }
