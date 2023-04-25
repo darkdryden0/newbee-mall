@@ -13,6 +13,8 @@ public class CardsDrawft {
 
     private Integer drawftCount;
 
+    private String gameName;
+
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
     private Date createTime;
 
@@ -38,6 +40,14 @@ public class CardsDrawft {
 
     public void setCardName(String cardName) {
         this.cardName = cardName;
+    }
+
+    public String getGameName() {
+        return gameName;
+    }
+
+    public void setGameName(String gameName) {
+        this.gameName = gameName;
     }
 
     public Date getCreateTime() {
@@ -67,6 +77,7 @@ public class CardsDrawft {
         sb.append(", cardName=").append(cardName);
         sb.append(", createTime=").append(createTime);
         sb.append(", drawftCount=").append(drawftCount);
+        sb.append(", gameName=").append(gameName);
         sb.append("]");
         return sb.toString();
     }

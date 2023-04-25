@@ -3,10 +3,12 @@ $(function () {
         url: '/admin/drawft/list',
         datatype: "json",
         colModel: [
-            {label: 'id', name: 'categoryId', index: 'categoryId', width: 50, key: true, hidden: true},
-            {label: '分类名称', name: 'categoryName', index: 'categoryName', width: 240},
-            {label: '排序值', name: 'categoryRank', index: 'categoryRank', width: 120},
-            {label: '添加时间', name: 'createTime', index: 'createTime', width: 120}
+            {label: 'id', name: 'drawftId', index: 'drawftId', width: 50, key: true, hidden: true},
+            {label: '用户', name: 'adminUserId', index: 'adminUserId', width: 120},
+            {label: '角色', name: 'cardName', index: 'cardName', width: 120},
+            {label: '抽数', name: 'drawftCount', index: 'drawftCount', width: 120},
+            {label: '添加时间', name: 'createTime', index: 'createTime', width: 120},
+            {label: '游戏名', name: 'gameName', index: 'gameName', width: 120}
         ],
         height: 560,
         rowNum: 10,

@@ -7,6 +7,7 @@
         <result column="card_name" jdbcType="VARCHAR" property="cardName"/>
         <result column="drawft_count" jdbcType="INTEGER" property="drawftCount"/>
         <result column="create_time" jdbcType="TIMESTAMP" property="createTime"/>
+        <result column="game_name" jdbcType="VARCHAR" property="gameName"/>
     </resultMap>
     <sql id="Base_Column_List">
         drawft_id, admin_user_id, card_name, drawft_count, create_time

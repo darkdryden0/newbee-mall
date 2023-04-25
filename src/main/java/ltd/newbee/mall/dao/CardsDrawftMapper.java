@@ -8,7 +8,7 @@
  */
 package ltd.newbee.mall.dao;
 
-import ltd.newbee.mall.entity.GoodsCategory;
+import ltd.newbee.mall.entity.CardsDrawft;
 import ltd.newbee.mall.util.PageQueryUtil;
 import org.apache.ibatis.annotations.Param;
 
@@ -17,23 +17,23 @@ import java.util.List;
 public interface CardsDrawftMapper {
     int deleteByPrimaryKey(Long categoryId);
 
-    int insert(GoodsCategory record);
+    int insert(CardsDrawft record);
 
-    int insertSelective(GoodsCategory record);
+    int insertSelective(CardsDrawft record);
 
-    GoodsCategory selectByPrimaryKey(Long categoryId);
+    CardsDrawft selectByPrimaryKey(Long categoryId);
 
-    GoodsCategory selectByLevelAndName(@Param("categoryLevel") Byte categoryLevel, @Param("categoryName") String categoryName);
+    CardsDrawft selectByLevelAndName(@Param("categoryLevel") Byte categoryLevel, @Param("categoryName") String categoryName);
 
-    int updateByPrimaryKeySelective(GoodsCategory record);
+    int updateByPrimaryKeySelective(CardsDrawft record);
 
-    int updateByPrimaryKey(GoodsCategory record);
+    int updateByPrimaryKey(CardsDrawft record);
 
-    List<GoodsCategory> findCardsDrawftList(PageQueryUtil pageUtil);
+    List<CardsDrawft> findCardsDrawftList(PageQueryUtil pageUtil);
 
     int getTotalGoodsCategories(PageQueryUtil pageUtil);
 
     int deleteBatch(Integer[] ids);
 
-    List<GoodsCategory> selectByLevelAndParentIdsAndNumber(@Param("parentIds") List<Long> parentIds, @Param("categoryLevel") int categoryLevel, @Param("number") int number);
+    List<CardsDrawft> selectByLevelAndParentIdsAndNumber(@Param("parentIds") List<Long> parentIds, @Param("categoryLevel") int categoryLevel, @Param("number") int number);
 }

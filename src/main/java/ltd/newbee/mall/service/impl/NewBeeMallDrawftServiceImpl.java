@@ -1,7 +1,7 @@
 package ltd.newbee.mall.service.impl;
 
 import ltd.newbee.mall.dao.CardsDrawftMapper;
-import ltd.newbee.mall.entity.GoodsCategory;
+import ltd.newbee.mall.entity.CardsDrawft;
 import ltd.newbee.mall.service.NewBeeMallDrawftService;
 import ltd.newbee.mall.util.PageQueryUtil;
 import ltd.newbee.mall.util.PageResult;
@@ -18,9 +18,9 @@ public class NewBeeMallDrawftServiceImpl implements NewBeeMallDrawftService {
 
     @Override
     public PageResult getDrawftPage(PageQueryUtil pageUtil) {
-        List<GoodsCategory> goodsCategories = cardsDrawftMapper.findCardsDrawftList(pageUtil);
+        List<CardsDrawft> cardsDrawft = cardsDrawftMapper.findCardsDrawftList(pageUtil);
         int total = cardsDrawftMapper.getTotalGoodsCategories(pageUtil);
-        PageResult pageResult = new PageResult(goodsCategories, total, pageUtil.getLimit(), pageUtil.getPage());
+        PageResult pageResult = new PageResult(cardsDrawft, total, pageUtil.getLimit(), pageUtil.getPage());
         return pageResult;
     }
 }
