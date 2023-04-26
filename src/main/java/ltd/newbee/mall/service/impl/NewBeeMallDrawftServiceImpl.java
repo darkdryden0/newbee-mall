@@ -19,7 +19,7 @@ public class NewBeeMallDrawftServiceImpl implements NewBeeMallDrawftService {
     @Override
     public PageResult getDrawftPage(PageQueryUtil pageUtil) {
         List<CardsDrawft> cardsDrawft = cardsDrawftMapper.findCardsDrawftList(pageUtil);
-        int total = cardsDrawftMapper.getTotalGoodsCategories(pageUtil);
+        int total = cardsDrawftMapper.getTotalDraftCount(pageUtil);
         PageResult pageResult = new PageResult(cardsDrawft, total, pageUtil.getLimit(), pageUtil.getPage());
         return pageResult;
     }

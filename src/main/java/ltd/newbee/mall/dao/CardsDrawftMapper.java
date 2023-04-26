@@ -31,7 +31,7 @@ public interface CardsDrawftMapper {
 
     List<CardsDrawft> findCardsDrawftList(PageQueryUtil pageUtil);
 
-    int getTotalGoodsCategories(PageQueryUtil pageUtil);
+    int getTotalDraftCount(PageQueryUtil pageUtil);
 
     int deleteBatch(Integer[] ids);
 

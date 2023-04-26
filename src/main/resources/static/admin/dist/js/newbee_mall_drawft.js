@@ -41,3 +41,14 @@ $(function () {
         $("#jqGrid").setGridWidth($(".card-body").width());
     });
 });
+
+/**
+ * jqGrid重新加载
+ */
+function reload() {
+    initFlatPickr();
+    var page = $("#jqGrid").jqGrid('getGridParam', 'page');
+    $("#jqGrid").jqGrid('setGridParam', {
+        page: page
+    }).trigger("reloadGrid");
+}
