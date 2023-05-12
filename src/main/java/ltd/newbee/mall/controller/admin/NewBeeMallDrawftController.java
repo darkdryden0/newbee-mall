@@ -2,6 +2,7 @@ package ltd.newbee.mall.controller.admin;
 
 import ltd.newbee.mall.entity.CardsDrawft;
 import ltd.newbee.mall.service.NewBeeMallDrawftService;
+import ltd.newbee.mall.service.RedisService;
 import ltd.newbee.mall.util.PageQueryUtil;
 import ltd.newbee.mall.util.Result;
 import ltd.newbee.mall.util.ResultGenerator;
@@ -17,6 +18,7 @@ import java.util.Map;
 public class NewBeeMallDrawftController {
     @Resource
     private NewBeeMallDrawftService newBeeMallDrawftService;
+    private RedisService redisService;
 
     @GetMapping("/drawft")
     public String ordersPage(HttpServletRequest request) {
@@ -39,7 +41,7 @@ public class NewBeeMallDrawftController {
      */
     @RequestMapping(value = "/drawft/add", method = RequestMethod.POST)
     @ResponseBody
-    public void add(CardsDrawft cardsDrawft) {
+    public void add(@RequestBody CardsDrawft cardsDrawft) {
         newBeeMallDrawftService.addDrawftData(cardsDrawft);
     }
 }

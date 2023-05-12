@@ -16,17 +16,14 @@
         select
         <include refid="Base_Column_List"/>
         from tb_newbee_mall_cards_drawft
-        order by drawft_count desc
-        <if test="start!=null and limit!=null">
-            limit #{start},#{limit}
-        </if>
+        order by create_time desc
     </select>
     <select id="getTotalDraftCount" parameterType="Map" resultType="int">
         select count(*) from tb_newbee_mall_cards_drawft
     </select>
 
     <insert id="insert" parameterType="ltd.newbee.mall.entity.CardsDrawft">
-    insert into tb_newbee_mall_cards_drawft (drawft_id, admin_user_id, card_name, drawft_count, create_time, game_name)
+    insert into tb_newbee_mall_cards_drawft (drawft_id, admin_user_id, card_name, drawft_count, game_name, create_time)
     values (#{drawftId,jdbcType=INTEGER}, #{adminUserId,jdbcType=INTEGER}, #{cardName,jdbcType=VARCHAR},
       #{drawftCount,jdbcType=INTEGER}, #{gameName,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP})
   </insert>

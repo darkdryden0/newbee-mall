@@ -4,7 +4,7 @@ $(function () {
         datatype: "json",
         colModel: [
             {label: 'id', name: 'drawftId', index: 'drawftId', width: 50, key: true, hidden: true},
-            {label: '用户', name: 'adminUserId', index: 'adminUserId', width: 120},
+            {label: '用户', name: 'adminUserId', index: 'adminUserId', width: 120, hidden: true},
             {label: '角色', name: 'cardName', index: 'cardName', width: 120},
             {label: '抽数', name: 'drawftCount', index: 'drawftCount', width: 120},
             {label: '添加时间', name: 'createTime', index: 'createTime', width: 120},
@@ -58,7 +58,8 @@ function reload() {
  */
 function addDraftData() {
     const data = {
-        "adminUserId": 1
+        "adminUserId": 1,
+        "gameName": "黑暗降临"
     };
     $.ajax({
         type: 'POST',//方法类型
@@ -66,24 +67,7 @@ function addDraftData() {
         contentType: 'application/json',
         data: JSON.stringify(data),
         success: function (result) {
-            if (result.resultCode == 200) {
-                swal({
-                    title: "抽卡成功",
-                    type: 'success',
-                    showCancelButton: false,
-                    confirmButtonColor: '#1baeae',
-                    confirmButtonText: '返回列表',
-                    confirmButtonClass: 'btn btn-success',
-                    buttonsStyling: false
-                }).then(function () {
-                    window.location.href = "/admin/drawft";
-                })
-            } else {
-                swal(result.message, {
-                    icon: "error",
-                });
-            }
-            ;
+            window.location.href = "/admin/drawft";
         },
         error: function () {
             swal("操作失败", {

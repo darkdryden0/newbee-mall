@@ -8,7 +8,9 @@ import ltd.newbee.mall.util.PageResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.List;
+import java.util.Random;
 
 @Service
 public class NewBeeMallDrawftServiceImpl implements NewBeeMallDrawftService {
@@ -26,6 +28,12 @@ public class NewBeeMallDrawftServiceImpl implements NewBeeMallDrawftService {
 
     @Override
     public void addDrawftData(CardsDrawft cardsDrawft) {
+        Random random = new Random(); // 随机数生成器
+        double[] rates = {0.006, 0.046, 1}; // 每个角色的抽卡概率
+        double randomNum = random.nextDouble(); // 生成一个随机概率值
+        int countSSR = 0;
+
+        cardsDrawft.setCreateTime(new Date());
         cardsDrawftMapper.insert(cardsDrawft);
     }
 }
