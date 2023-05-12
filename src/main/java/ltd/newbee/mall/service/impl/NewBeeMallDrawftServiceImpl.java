@@ -23,4 +23,9 @@ public class NewBeeMallDrawftServiceImpl implements NewBeeMallDrawftService {
         PageResult pageResult = new PageResult(cardsDrawft, total, pageUtil.getLimit(), pageUtil.getPage());
         return pageResult;
     }
+
+    @Override
+    public void addDrawftData(CardsDrawft cardsDrawft) {
+        cardsDrawftMapper.insert(cardsDrawft);
+    }
 }

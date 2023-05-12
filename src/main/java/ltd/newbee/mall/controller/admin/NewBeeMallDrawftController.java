@@ -1,5 +1,6 @@
 package ltd.newbee.mall.controller.admin;
 
+import ltd.newbee.mall.entity.CardsDrawft;
 import ltd.newbee.mall.service.NewBeeMallDrawftService;
 import ltd.newbee.mall.util.PageQueryUtil;
 import ltd.newbee.mall.util.Result;
@@ -31,5 +32,14 @@ public class NewBeeMallDrawftController {
     public Result list(@RequestParam Map<String, Object> params) {
         PageQueryUtil pageUtil = new PageQueryUtil(params);
         return ResultGenerator.genSuccessResult(newBeeMallDrawftService.getDrawftPage(pageUtil));
+    }
+
+    /**
+     * add
+     */
+    @RequestMapping(value = "/drawft/add", method = RequestMethod.POST)
+    @ResponseBody
+    public void add(CardsDrawft cardsDrawft) {
+        newBeeMallDrawftService.addDrawftData(cardsDrawft);
     }
 }

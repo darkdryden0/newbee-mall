@@ -15,25 +15,9 @@ import org.apache.ibatis.annotations.Param;
 import java.util.List;
 
 public interface CardsDrawftMapper {
-    int deleteByPrimaryKey(Long categoryId);
-
     int insert(CardsDrawft record);
-
-    int insertSelective(CardsDrawft record);
-
-    CardsDrawft selectByPrimaryKey(Long categoryId);
-
-    CardsDrawft selectByLevelAndName(@Param("categoryLevel") Byte categoryLevel, @Param("categoryName") String categoryName);
-
-    int updateByPrimaryKeySelective(CardsDrawft record);
-
-    int updateByPrimaryKey(CardsDrawft record);
 
     List<CardsDrawft> findCardsDrawftList(PageQueryUtil pageUtil);
 
     int getTotalDraftCount(PageQueryUtil pageUtil);
-
-    int deleteBatch(Integer[] ids);
-
-    List<CardsDrawft> selectByLevelAndParentIdsAndNumber(@Param("parentIds") List<Long> parentIds, @Param("categoryLevel") int categoryLevel, @Param("number") int number);
 }

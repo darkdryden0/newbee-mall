@@ -52,3 +52,43 @@ function reload() {
         page: page
     }).trigger("reloadGrid");
 }
+
+/**
+ * 添加数据
+ */
+function addDraftData() {
+    const data = {
+        "adminUserId": 1
+    };
+    $.ajax({
+        type: 'POST',//方法类型
+        url: "/admin/drawft/add",
+        contentType: 'application/json',
+        data: JSON.stringify(data),
+        success: function (result) {
+            if (result.resultCode == 200) {
+                swal({
+                    title: "抽卡成功",
+                    type: 'success',
+                    showCancelButton: false,
+                    confirmButtonColor: '#1baeae',
+                    confirmButtonText: '返回列表',
+                    confirmButtonClass: 'btn btn-success',
+                    buttonsStyling: false
+                }).then(function () {
+                    window.location.href = "/admin/drawft";
+                })
+            } else {
+                swal(result.message, {
+                    icon: "error",
+                });
+            }
+            ;
+        },
+        error: function () {
+            swal("操作失败", {
+                icon: "error",
+            });
+        }
+    });
+}
