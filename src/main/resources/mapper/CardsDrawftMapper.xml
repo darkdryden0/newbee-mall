@@ -16,7 +16,10 @@
         select
         <include refid="Base_Column_List"/>
         from tb_newbee_mall_cards_drawft
-        order by create_time desc
+        order by drawft_id desc
+        <if test="start!=null and limit!=null">
+            limit #{start},#{limit}
+        </if>
     </select>
     <select id="getTotalDraftCount" parameterType="Map" resultType="int">
         select count(*) from tb_newbee_mall_cards_drawft
