@@ -27,37 +27,46 @@
         <!-- Main content -->
         <div id="main" style="width: 600px;height:400px;"></div>
         <script th:src="@{https://cdn.bootcdn.net/ajax/libs/echarts/5.4.0/echarts.min.js}"></script>
+        <!-- jQuery -->
+        <script th:src="@{/admin/plugins/jquery/jquery.min.js}"></script>
         <script>
-            const myChart = echarts.init(document.getElementById('main'));
-            const a = [${resultMap.get("statName")}].map(String);
-            const option = {
-                title: {
-                    text: '柱状图示例'
-                },
-                xAxis: {
-                    name: '角色',
-                    data: [a],
-                },
-                yAxis: {
-                    type: '抽数'
-                },
-                series: [{
-                    data: [[${resultMap.get("avgScore")}]],
-                    type: 'bar'
-                }, {
-                    data: [[${resultMap.get("minScore")}]],
-                    type: 'bar'
-                }]
-            };
-            myChart.setOption(option);
+            // 使用 AJAX 请求获取数据
+            $.ajax({
+                url: "/admin/analyse/data",
+                method: "GET",
+                success: function(data) {
+                    const myChart = echarts.init(document.getElementById('main'));
+                    const array = data.statName;
+                    const option = {
+                        title: {
+                            text: '柱状图示例'
+                        },
+                        xAxis: {
+                            name: '角色',
+                            data: array,
+                        },
+                        yAxis: {
+                            type: 'value'
+                        },
+                        series: [{
+                            name: '平均分',
+                            data: data.avgScore,
+                            type: 'bar'
+                        }, {
+                            name: '最低分',
+                            data: data.minScore,
+                            type: 'bar'
+                        }]
+                    };
+                    myChart.setOption(option);
+                }
+            });
         </script>
     </div>
     <!-- /.content-wrapper -->
     <!-- 引入页脚footer-fragment -->
     <div th:replace="admin/footer::footer-fragment"></div>
 </div>
-<!-- jQuery -->
-<script th:src="@{/admin/plugins/jquery/jquery.min.js}"></script>
 <!-- Bootstrap 4 -->
 <script th:src="@{/admin/plugins/bootstrap/js/bootstrap.bundle.min.js}"></script>
 <!-- AdminLTE App -->
